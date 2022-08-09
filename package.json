@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/JashbetVal/appMovies/issues"
   },
-  "homepage": "https://github.com/JashbetVal/appMovies#readme"
+  "homepage": "https://github.com/JashbetVal/appMovies#readme",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
 }
