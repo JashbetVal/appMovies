@@ -358,3 +358,18 @@ footer {
 .inactive {
   display: none;
 }
+
+/*Imagen icono Home */
+.img {
+  border: 1px solid rgb(white);
+  border-radius: 4px;
+  padding: 3px;
+  width: 40px;
+}
+
+.imgBtn {
+  border: 1px solid rgb(white);
+  border-radius: 4px;
+  padding: 3px;
+  width: 50px;
+}

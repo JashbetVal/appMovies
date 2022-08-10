@@ -8,7 +8,12 @@ trendingBtn.addEventListener('click', ()=>{
 });
 
 arrowBtn.addEventListener('click', ()=>{
-    location.hash = '#home='
+    //location.hash = '#home='
+    window.history.back();
+});
+
+imgBtn.addEventListener('click',()=>{
+    location.hash = '#home=';
 });
 
 window.addEventListener('DOMContentLoaded', navigator,false);
@@ -114,6 +119,10 @@ function searchPage(){
 
     window.scrollTo( 0, 0 );
     console.log('SEARCH');
+    
+    const [_,query]=location.hash.split('='); //partimos el hash en 2, esta division es asi: ['#category' , 'id_name']
+    getMoviesBySearch(query);
+
 }
 
 function trendsPage(){
@@ -128,9 +137,12 @@ function trendsPage(){
 
     trendingPreviewSection.classList.add('inactive');
     categoriesPreviewSection.classList.add('inactive');
+    headerCategoryTitle.innerHTML = 'Tendencias';
     genericSection.classList.remove('inactive');
     movieDetailSection.classList.add('inactive');
 
     window.scrollTo( 0, 0 );
     console.log("TRENDS");
+
+    getTrendingMovies();
 }

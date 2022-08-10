@@ -63,7 +63,7 @@ async function getTrendingMoviesPreview(){
     const {data} = await api('trending/movie/day');
     const movies = data.results; 
    
-    createMovies(movies,trendingMoviesPreviewList);
+    createMovies(movies, trendingMoviesPreviewList);
 }
 
 async function getCategegoriesPreview(){
@@ -86,5 +86,21 @@ createMovies(movies,genericSection);
 }
 
 
-/* getTrendingMoviesPreview();
-getCategegoriesPreview(); */
+async function getMoviesBySearch(query){
+    
+    const {data}=await api ('/search/movie',{
+        params: {
+            query,
+        },
+    });
+const movies = data.results;
+createMovies(movies,genericSection);
+}
+
+async function getTrendingMovies(){
+    const {data} = await api('trending/movie/day');
+    const movies = data.results; 
+   
+
+    createMovies(movies, genericSection);
+}
