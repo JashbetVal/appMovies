@@ -16,8 +16,8 @@ imgBtn.addEventListener('click',()=>{
     location.hash = '#home=';
 });
 
-window.addEventListener('DOMContentLoaded', navigator,false);
-window.addEventListener('hashchange',navigator,false);
+window.addEventListener('DOMContentLoaded', navigator, false);
+window.addEventListener('hashchange', navigator, false);
 
 
 function navigator () {
@@ -100,6 +100,11 @@ function moviesDetailsPage(){
 
     window.scrollTo( 0, 0 );
     console.log("DETAILS");
+    
+    const [_,movieId]=location.hash.split('='); //partimos el hash en 2, esta division es asi: ['#category' , 'id_name']
+
+    getMovieById(movieId);
+    console.log(movieId);
 }
 
 function searchPage(){

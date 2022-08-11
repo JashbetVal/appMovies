@@ -20,6 +20,9 @@ function createMovies(movies,container){
         
          const movieContainer = document.createElement('div');
          movieContainer.classList.add('movie-container');
+         movieContainer.addEventListener('click',() => {
+            location.hash ="#movie=" + movie.id;
+         });
  
          const movieImg = document.createElement('img');
          movieImg.classList.add ('movie-img');
@@ -57,6 +60,8 @@ function createCategories(categories,container){
     });
 
 }
+
+
 
 // Llamado a la API
 async function getTrendingMoviesPreview(){
@@ -103,4 +108,31 @@ async function getTrendingMovies(){
    
 
     createMovies(movies, genericSection);
+}
+
+async function getMovieById(movieId) {
+    const {data } = await api('movie/'+ movieId );
+    const movies = data.results; 
+   
+    const movieImgUrl ='https://image.tmdb.org/t/p/w300/' + data.poster_path;
+
+    headerSection.style.background = 
+    `url(${movieImgUrl})`; 
+
+    //console.log(movieId);
+
+    movieDetailTitle.textContent = data.title;
+    movieDetailDescription.textContent = data.overview;
+    movieDetailScore.textContent = data.vote_average;
+
+    createCategories(data.genres,movieDetailCategoriesList);
+    pelisRelacionadas(movieId);
+}
+
+async function pelisRelacionadas(movieId){
+
+    const {data } = await api('movie/'+ movieId+'/recommendations');
+    const movies = data.results; 
+    createMovies(movies, relatedMoviesContainer );
+
 }
